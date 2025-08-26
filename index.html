@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="style.css"/>
+        <title>Fake API</title>
+    </head>
+    <body>
+        <h1 class="main-title"> CRUD con JSON PLACEHOLDER .typicode</h1>
+        <p> *Toda la información puede aparecer en la consola</p>
+
+        <!--seccion botones-->
+        <section class="seccion-crud">
+            <div style="text-align: center;">
+                <h2 class="titulo-botones"> CRUD </h2>
+            </div>
+            <div class="botonesCRUD">
+                <button onclick="verTodos()"> Mostrar todos</button>
+                <button onclick="verUno()"> Ver uno</button>
+                <button onclick="sumarUno()"> Añadir uno</button>
+                <button onclick="cambiarSoloNombre()"> Cambiar solo nombre</button>
+                <button onclick="borrarUnoPorId()"> Borrar uno por id</button>
+            </div>
+        </section>
+
+        <div id="resultado">
+            <div class="fila">
+                <p class="label"> Nombre</p>
+                <p id="name"></p>
+            </div> 
+
+            <div class="fila">
+                <p class="label"> Body</p>
+                <p id="body"></p>
+            </div>
+
+            <div class="fila">
+                <p class="label"> E-mail</p>
+                <p id="email"></p>
+            </div>
+        </div>
+
+        <script src="main.js"></script>
+    </body>
+</html>

@@ -69,15 +69,19 @@ function sumarUno(){
     .then((res) => res.json())
     .then((data) => {
         console.log(data);
+        commentName.innerText = data.name;
+        commentBody.innerText = data.body;
+        commentEmail.innerText = data.email;   
     })
     .catch((error) => console.log(error));
 
 }
 
 // PATH by id
-function cambiarSoloNombre(){
-
+async function cambiarSoloNombre(){
+    
     let id = prompt("Escribe el ID)");
+    let { nombre} = await verOriginales(id);
     fetch(`${urltypicode}/${id}`,{
             method: 'PATCH',
             headers: {
@@ -92,7 +96,10 @@ function cambiarSoloNombre(){
         }) 
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
+            console.log("Nombre Original:",nombre);
+            commentName.innerText = data.name;
+            commentBody.innerText = data.body;
+            commentEmail.innerText = data.email;   
         
         })
         .catch((error) => console.log(error));
@@ -113,4 +120,19 @@ function borrarUnoPorId(){
       alert("El comentario fue borrado exitosamente.")
     })
     .catch((error) => console.log(error));
+}
+
+async function verOriginales(id) {
+    try {
+        const response = await fetch(`${urltypicode}/${id}`);
+        const data = await response.json();
+
+        let nombre = data.name;
+        let cuerpo = data.body;
+        let correo = data.email;
+
+        return { nombre, cuerpo, correo };
+    } catch (error) {
+        console.log(error);
+    }
 }
